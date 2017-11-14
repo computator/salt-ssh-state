@@ -10,6 +10,8 @@ sshpki-host-cert-{{ loop.index }}:
     - mode: 644
     - show_changes: false
     - allow_empty: false
+    - watch_in:
+      - service: sshd
 sshpki-host-cert-{{ loop.index }}-config:
   file.append:
     - name: /etc/ssh/sshd_config
