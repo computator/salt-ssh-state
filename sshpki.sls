@@ -14,6 +14,8 @@ sshpki-host-cert-{{ loop.index }}-config:
   file.append:
     - name: /etc/ssh/sshd_config
     - text: HostCertificate /etc/ssh/ssh_host_{{ type }}_key-cert.pub
+    - require:
+      - file: sshpki-host-cert-{{ loop.index }}
     - watch_in:
       - service: sshd
 {% endfor %}
