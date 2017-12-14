@@ -45,7 +45,6 @@ sshpki-key-updates:
     - function: state.apply
     - job_args:
       - ssh.sshpki
-    - minutes: 1
     - days: 1
     - splay: 3600
     - return_job: false
