@@ -39,3 +39,13 @@ sshpki-user-cert-{{ user }}-{{ loop.index }}:
 {% endif %}
 {% endfor %}
 {% endfor %}
+
+sshpki-key-updates:
+  schedule.present:
+    - function: state.apply
+    - job_args:
+      - ssh.sshpki
+    - minutes: 1
+    - days: 1
+    - splay: 3600
+    - return_job: false
